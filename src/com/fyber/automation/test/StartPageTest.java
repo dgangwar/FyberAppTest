@@ -2,7 +2,7 @@ package com.fyber.automation.test;
 
 import org.testng.annotations.Test;
 
-import com.fyber.automation.TabNavView;
+import com.fyber.automation.pageobject.TabNavView;
 
 public class StartPageTest
 

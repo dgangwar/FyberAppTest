@@ -1,7 +1,7 @@
-package com.fyber.automation;
+package com.fyber.automation.pageobject;
 
-import com.automation.core.AppiumCommands;
-import com.automation.core.Validation;
+import com.fyber.automation.core.AppiumCommands;
+import com.fyber.automation.core.Validation;
 
 
 public class TabNavView {

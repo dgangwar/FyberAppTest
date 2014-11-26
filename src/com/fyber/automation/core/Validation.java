@@ -1,4 +1,4 @@
-package com.automation.core;
+package com.fyber.automation.core;
 
 import org.testng.Assert;
 
