@@ -1,37 +1,70 @@
 package com.fyber.automation.pageobject;
 
-import com.fyber.automation.core.AppiumCommands;
-import com.fyber.automation.core.Validation;
+import java.util.Iterator;
+import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.fyber.automation.core.AppiumCommands;
 
 public class TabNavView {
 	
+	private InterStitialPage interStitialPage  = new InterStitialPage();
+	private MBEPage mbePage  = new MBEPage();
+	private MorePage morePage = new MorePage();
+	private OfferWallPage offerWallPage = new OfferWallPage();
+	private StartSDKPage sdkPage = new StartSDKPage();
+	
+	
 	private AppiumCommands appiumcommand = new AppiumCommands();
 
-	public Validation isStartPageOpened() {
+	
+	
+	public String getOpenedPage() {
 		
-		boolean isPageOpened = appiumcommand.isElementPresentByXpath("//UIAApplication[1]/UIAWindow[2]/UIANavigationBar[1]");
-		return new Validation(isPageOpened);
+		String TabViewPage = "//UIAApplication[1]/UIAWindow[2]/UIATabBar[1]/UIAButton";
+		List<WebElement> pageList =  appiumcommand.getElementsByXpath(TabViewPage);
+		Iterator<WebElement> itr = pageList.iterator();
+		while(itr.hasNext())
+		{
+			WebElement element = itr.next();
+			System.out.println(element.getAttribute("value"));
+			if(element.getAttribute("value").equalsIgnoreCase("1"))
+			{
+				return element.getAttribute("name");
+				
+			}
+			
+		}
+		return null;
+		
 	}
 
 	public StartSDKPage goToStartSDKPage() {
-		return null;
+		appiumcommand.clickByName("Start");
+		
+		return sdkPage;
 	}
 
 	public OfferWallPage goToOfferWallPage() {
-		return null;
+		appiumcommand.clickByName("Start");
+		return offerWallPage;
 	}
 
 	public InterStitialPage goToInterStitialPage() {
-		return null;
+		appiumcommand.clickByName("Interstitial");
+		return interStitialPage;
 	}
 
 	public MBEPage goToMBEPage() {
-		return null;
+		appiumcommand.clickByName("MBE").waitForElementToExist(By.xpath("//UIATabBar[1]/UIAButton[@value='1']"));
+		return mbePage;
 	}
 
 	public MorePage goToMorePage() {
-		return null;
+		appiumcommand.clickByName("More");
+		return morePage;
 	}
 
 }

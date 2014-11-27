@@ -24,6 +24,7 @@ public class DriverFactory {
 		capabilities.setCapability("platformName", "iOS");
 		capabilities.setCapability("deviceName", "iPhone Simulator");
 		capabilities.setCapability("app", app.getAbsolutePath());
+		capabilities.setCapability("", "");
 		try {
 			if(driver == null)
 			{

@@ -1,6 +1,7 @@
 package com.fyber.automation.core;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSDriver;
 
 import java.net.MalformedURLException;
 
@@ -11,11 +12,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-public abstract class BaseAppium {
+public class BaseAppium {
 
 	private static String suiteName = "AppiumTest";
 	AppiumCommands appiumCommands;
-	AppiumDriver driver ;
+	IOSDriver driver ;
 
 	/**
 	 * @param testContext
@@ -24,14 +25,14 @@ public abstract class BaseAppium {
 	 * @throws MalformedURLException 
 	 * @throws VisuTestFrameworkException
 	 */
-	@BeforeSuite(alwaysRun = true)
-	public void beforeSuite(ITestContext testContext) throws MalformedURLException {
-		setSuiteName(testContext.getSuite().getName());
-		// set up appium
-		driver = DriverFactory.getDriver();
-		
-
-	}
+//	@BeforeSuite(alwaysRun = true)
+//	public void beforeSuite(ITestContext testContext) throws MalformedURLException {
+//		setSuiteName(testContext.getSuite().getName());
+//		// set up appium
+//		driver = DriverFactory.getDriver();
+//		
+//
+//	}
 
 	public static void setSuiteName(String name) {
 		suiteName = name;
@@ -48,6 +49,7 @@ public abstract class BaseAppium {
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() throws Exception {
 		System.out.println("before class");
+		driver = DriverFactory.getDriver();
 	}
 
 	/**
@@ -58,7 +60,7 @@ public abstract class BaseAppium {
 	 */
 	@BeforeMethod(alwaysRun = true)
 	public void setUp() {
-		driver.closeApp();
+		//driver.closeApp();
 	}
 
 	/**
@@ -77,23 +79,23 @@ public abstract class BaseAppium {
 	 */
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		this.closeVisuAndWebDriver();
+		
 	}
 
 	/**
 	 * This method is executed very last of test suite execution This shutdowns
 	 * loggers and hub
 	 */
-	@AfterSuite(alwaysRun = true)
-	public void afterSuite(ITestContext testContext) {
-
-	}
+//	@AfterSuite(alwaysRun = true)
+//	public void afterSuite(ITestContext testContext) {
+//
+//	}
 
 	/**
 	 * Removes the driver
 	 */
 	protected void closeVisuAndWebDriver() {
-		//appiumCommands.closeApp();
+		appiumCommands.closeApp();
 	}
 
 }

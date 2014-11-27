@@ -6,6 +6,7 @@ import org.testng.TestNG;
 import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
+import com.fyber.automation.test.*;
 
 
 public class AppiumSuite
@@ -21,11 +22,12 @@ public class AppiumSuite
 			// Create an instance of XmlTest and assign a name for it.
 			XmlTest myTest = new XmlTest(mySuite);
 			
-			myTest.addIncludedGroup("functional");
-
+			System.out.println(System.getProperty("java.class.path"));
+			
 			// Create a list which can contain the classes that you want to run.
 			List<XmlClass> myClasses = new ArrayList<XmlClass>();
 			myClasses.add(new XmlClass("com.fyber.automation.test.StartPageTest"));
+			myClasses.add(new XmlClass("com.fyber.automation.test.MBEPageTest"));
 
 			// Assign that to the XmlTest Object created earlier.
 			myTest.setXmlClasses(myClasses);

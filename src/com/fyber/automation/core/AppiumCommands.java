@@ -1,24 +1,40 @@
 package com.fyber.automation.core;
 
-import io.appium.java_client.AppiumDriver;
+import java.util.List;
+
+import io.appium.java_client.ios.IOSDriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ScreenOrientation;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class AppiumCommands  {
 	
-	AppiumDriver driver = DriverFactory.getDriver();
+	final int DEFAULT_WAIT_IN_SECONDS = 5;
 	
-	public void click(String locator) {
+	IOSDriver driver = DriverFactory.getDriver();
+	
+	public void clickByID(String locator) {
 
 		driver.findElementByAccessibilityId(locator).click();
 
 	}
+	public AppiumCommands clickByName(String locator) {
 
-	public void type(String locator, String textValue) {
+		driver.findElementByName(locator).click();
+		return this;
+
+	}
+
+	public AppiumCommands type(String locator, String textValue) {
 
 		driver.findElementByAccessibilityId(locator).sendKeys(textValue);
-
+		return this;
 	}
 
 	public String getText(String locator) {
@@ -26,10 +42,27 @@ public class AppiumCommands  {
 
 	}
 	
-	public String getAttributeAtLocator(String locator, String attributeName) {
+	public String getAttributeAtLocatorByID(String locator, String attributeName) {
 		return driver.findElementByAccessibilityId(locator).getAttribute(attributeName);
 
 	}
+	
+	public String getAttributeAtLocatorByName(String locator, String attributeName) {
+		return driver.findElementByName(locator).getAttribute(attributeName);
+
+	}
+	
+	public String getAttributeAtLocatorByXpath(String locator, String attributeName) {
+		return driver.findElementByXPath(locator).getAttribute(attributeName);
+
+	}
+	
+	public List<WebElement>  getElementsByXpath(String locator)
+	{
+		return driver.findElementsByXPath(locator);
+	}
+	
+	
 	
 	public boolean isElementPresentByXpath(String locator) {
 
@@ -52,8 +85,15 @@ public class AppiumCommands  {
 	}
 	public void closeApp()
 	{
-		driver.closeApp();
+		
 		
 	}
+	
+	 public AppiumCommands waitForElementToExist(By locator)
+	   {
+	      Wait<WebDriver> wait = new WebDriverWait(driver, this.DEFAULT_WAIT_IN_SECONDS);
+	      wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	      return this;
+	   }
 	
 }
