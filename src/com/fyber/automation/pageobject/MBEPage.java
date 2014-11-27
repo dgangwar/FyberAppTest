@@ -12,5 +12,32 @@ public class MBEPage
 		String value = appiumcommand.getAttributeAtLocatorByName("MBE", "value");
 		return new Validation(value.equalsIgnoreCase("1"));
 	}
+	
+	public MBEPage turnOnNotification()
+	{
+		String value = this.getNotificationStatus();
+		if(value.equalsIgnoreCase("0"))
+		{
+			appiumcommand.clickByName("ShowNotificationOnEngagementCompleted_Switch");
+		}
+		return this;
+	}
+	
+	public MBEPage turnOffNotification()
+	{
+		String value = this.getNotificationStatus();
+		if(value.equalsIgnoreCase("1"))
+		{
+			appiumcommand.clickByName("ShowNotificationOnEngagementCompleted_Switch");
+		}
+		return this;
+	}
+	
+	public String getNotificationStatus()
+	{
+		return appiumcommand.getAttributeAtLocatorByName("ShowNotificationOnEngagementCompleted_Switch", "value");
+	}
+	
+	
 
 }

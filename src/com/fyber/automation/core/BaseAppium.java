@@ -1,13 +1,10 @@
 package com.fyber.automation.core;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.net.MalformedURLException;
 
-import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -25,14 +22,13 @@ public class BaseAppium {
 	 * @throws MalformedURLException 
 	 * @throws VisuTestFrameworkException
 	 */
-//	@BeforeSuite(alwaysRun = true)
-//	public void beforeSuite(ITestContext testContext) throws MalformedURLException {
-//		setSuiteName(testContext.getSuite().getName());
-//		// set up appium
-//		driver = DriverFactory.getDriver();
-//		
-//
-//	}
+	@BeforeSuite(alwaysRun = true)
+	public void beforeSuite() throws MalformedURLException {
+		// set up appium
+		driver = DriverFactory.getDriver();
+		
+
+	}
 
 	public static void setSuiteName(String name) {
 		suiteName = name;

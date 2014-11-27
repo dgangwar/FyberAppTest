@@ -26,10 +26,10 @@ public class AppiumSuite
 			
 			// Create a list which can contain the classes that you want to run.
 			List<XmlClass> myClasses = new ArrayList<XmlClass>();
-			myClasses.add(new XmlClass("com.fyber.automation.test.StartPageTest"));
-			myClasses.add(new XmlClass("com.fyber.automation.test.MBEPageTest"));
+			myClasses.add(new XmlClass(StartPageTest.class));
+			myClasses.add(new XmlClass(MBEPageTest.class));
 
-			// Assign that to the XmlTest Object created earlier.
+			// Assign that to the XmlTest Object created earlier.w3
 			myTest.setXmlClasses(myClasses);
 
 			// Create a list of XmlTests and add the Xmltest you created earlier to
