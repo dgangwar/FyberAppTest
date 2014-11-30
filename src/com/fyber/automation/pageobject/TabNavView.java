@@ -60,7 +60,8 @@ public class TabNavView {
 	}
 
 	public MorePage goToMorePage() {
-		appiumcommand.clickByName("More");
+		appiumcommand.clickByName("More").waitForElementToExist(
+				By.xpath("//UIAStaticText[@name='More']"));
 		return morePage;
 	}
 

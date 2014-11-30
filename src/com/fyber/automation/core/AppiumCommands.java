@@ -31,6 +31,14 @@ public class AppiumCommands {
 		return this;
 
 	}
+	
+	public AppiumCommands sendKeysByXpath(String wheelPickerXpath, String dataString) {
+		this.isElementPresentByXpath("//UIAPickerWheel");
+		this.waitForElementToExist(By.xpath(wheelPickerXpath));
+		driver.findElementByXPath(wheelPickerXpath).sendKeys(dataString);
+		return this;
+
+	}
 
 	public AppiumCommands type(String locator, String textValue) {
 
@@ -116,6 +124,11 @@ public class AppiumCommands {
 	public boolean isAlertPresent() {
 		Alert alert = driver.switchTo().alert();
 		return (alert == null);
+	}
+
+	public String getValueByXpath(String xpath) {
+		
+		return driver.findElementByXPath(xpath).getText();
 	}
 
 }

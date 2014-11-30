@@ -16,11 +16,11 @@ public class BaseAppium {
 	IOSDriver driver ;
 
 	/**
-	 * @param testContext
+	 *
 	 *            This method invoked very first of test suite execution This
 	 *            starts the loggers and invokes creating hub and nodes
 	 * @throws MalformedURLException 
-	 * @throws VisuTestFrameworkException
+	 *
 	 */
 	@BeforeSuite(alwaysRun = true)
 	public void beforeSuite() throws MalformedURLException {
@@ -52,7 +52,6 @@ public class BaseAppium {
 	 * This method is invoked before every test case. Initializes the driver and
 	 * launches landing page
 	 * 
-	 * @throws VisuTestFrameworkException
 	 */
 	@BeforeMethod(alwaysRun = true)
 	public void setUp() {
@@ -63,7 +62,6 @@ public class BaseAppium {
 	 * This method can be overridden in test classes to setup the test related
 	 * actions
 	 * 
-	 * @throws VisuTestFrameworkException
 	 */
 	@SuppressWarnings("unused")
 	protected void testSetUp() {
@@ -83,14 +81,14 @@ public class BaseAppium {
 	 * loggers and hub
 	 */
 //	@AfterSuite(alwaysRun = true)
-//	public void afterSuite(ITestContext testContext) {
+//	public void afterSuite() {
 //
 //	}
 
 	/**
 	 * Removes the driver
 	 */
-	protected void closeVisuAndWebDriver() {
+	protected void closeWebDriver() {
 		appiumCommands.closeApp();
 	}
 
