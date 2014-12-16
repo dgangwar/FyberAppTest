@@ -4,6 +4,7 @@ import io.appium.java_client.ios.IOSDriver;
 
 import java.net.MalformedURLException;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -55,7 +56,6 @@ public class BaseAppium {
 	 */
 	@BeforeMethod(alwaysRun = true)
 	public void setUp() {
-		//driver.closeApp();
 	}
 
 	/**
@@ -63,7 +63,6 @@ public class BaseAppium {
 	 * actions
 	 * 
 	 */
-	@SuppressWarnings("unused")
 	protected void testSetUp() {
 	}
 
@@ -80,10 +79,10 @@ public class BaseAppium {
 	 * This method is executed very last of test suite execution This shutdowns
 	 * loggers and hub
 	 */
-//	@AfterSuite(alwaysRun = true)
-//	public void afterSuite() {
-//
-//	}
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		driver.closeApp();
+	}
 
 	/**
 	 * Removes the driver
